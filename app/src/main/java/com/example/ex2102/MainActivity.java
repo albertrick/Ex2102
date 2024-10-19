@@ -55,22 +55,18 @@ public class MainActivity extends AppCompatActivity {
                                 Log.i("MainActivity", "createUserWithEmailAndPassword:success");
                                 FirebaseUser user = refAuth.getCurrentUser();
                                 tVMsg.setText("User created successfully\nUid: "+user.getUid());
+                            } else if (task.getException() instanceof FirebaseAuthInvalidUserException){
+                                tVMsg.setText("Invalid email address.");
+                            } else if (task.getException() instanceof FirebaseAuthWeakPasswordException) {
+                                tVMsg.setText("Password too weak.");
+                            } else if (task.getException() instanceof FirebaseAuthUserCollisionException) {
+                                tVMsg.setText("User already exists.");
+                            } else if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
+                                tVMsg.setText("General authentication failure.");
+                            } else if (task.getException() instanceof FirebaseNetworkException) {
+                                tVMsg.setText("Network error. Please check your connection and try again.");
                             } else {
-                                try {
-                                    throw task.getException();
-                                } catch (FirebaseAuthInvalidUserException e) {
-                                    tVMsg.setText("Invalid email address.");
-                                } catch (FirebaseAuthWeakPasswordException e) {
-                                    tVMsg.setText("Password too weak.");
-                                } catch (FirebaseAuthUserCollisionException e) {
-                                    tVMsg.setText("User already exists.");
-                                } catch (FirebaseAuthInvalidCredentialsException e) {
-                                    tVMsg.setText("General authentication failure.");
-                                } catch (FirebaseNetworkException e) {
-                                    tVMsg.setText("Network error. Please check your connection and try again.");
-                                } catch (Exception e) {
-                                    tVMsg.setText("An error occurred. Please try again later.");
-                                }
+                                tVMsg.setText("An error occurred. Please try again later.");
                             }
                         }
                     });
