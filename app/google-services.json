@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "114914115904",
+    "project_id": "ex2102-bfac9",
+    "storage_bucket": "ex2102-bfac9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:114914115904:android:1d95819e5bc03ce968faa5",
+        "android_client_info": {
+          "package_name": "com.example.ex2102"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkjBap9rCW2nf8kS_42oa_nehBUCVDWjI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
