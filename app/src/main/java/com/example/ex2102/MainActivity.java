@@ -2,6 +2,7 @@ package com.example.ex2102;
 
 import static com.example.ex2102.FBRef.refAuth;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -47,10 +48,13 @@ public class MainActivity extends AppCompatActivity {
         if (email.isEmpty() || pass.isEmpty()) {
             tVMsg.setText("Please fill all fields");
         } else {
+            ProgressDialog pd = ProgressDialog.show(this, "Connecting", "Creating user...", true);
+            pd.show();
             refAuth.createUserWithEmailAndPassword(email, pass)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
+                            pd.dismiss();
                             if (task.isSuccessful()) {
                                 Log.i("MainActivity", "createUserWithEmailAndPassword:success");
                                 FirebaseUser user = refAuth.getCurrentUser();
