@@ -48,7 +48,9 @@ public class MainActivity extends AppCompatActivity {
         if (email.isEmpty() || pass.isEmpty()) {
             tVMsg.setText("Please fill all fields");
         } else {
-            ProgressDialog pd = ProgressDialog.show(this, "Connecting", "Creating user...", true);
+            ProgressDialog pd = new ProgressDialog(this);
+            pd.setTitle("Connecting");
+            pd.setMessage("Creating user...");
             pd.show();
             refAuth.createUserWithEmailAndPassword(email, pass)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
